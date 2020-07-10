@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WifiRecovery"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="MainWindow"
+        mc:Ignorable="d"
+        Title="Wifi Credentials Recovery" Height="560.545" Width="600" Icon="wifi-signal.png" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
+
+
+    <Grid Margin="0,34,0,-0.2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="292*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Margin="0,0,0,88" ItemsSource="{Binding WifiCredentials}" Grid.ColumnSpan="5">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Authors">
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="SSID" Width="200" DisplayMemberBinding="{Binding SSID}" />
+                    <GridViewColumn Header="Password" Width="270" DisplayMemberBinding="{Binding Password}" />
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label Margin="239.8,0,6.2,53" Name="label_PleaseWait" Background="White" Visibility="Hidden" Height="28" VerticalAlignment="Bottom" Grid.Column="1" Grid.ColumnSpan="2">Please Wait...</Label>
+        <Button Content="Get Passwords" Name="GetBtn" HorizontalAlignment="Stretch" Height="Auto" Margin="169.8,475,47.4,14" VerticalAlignment="Stretch" Click="GetWifiPass_Click" Grid.ColumnSpan="3" Grid.Column="1" />
+        <Label Content="DiamondWolf" HorizontalAlignment="Left" Margin="63.6,505,0,0" VerticalAlignment="Top" Width="65" FontSize="8" Panel.ZIndex="1000" Grid.Column="4"/>
+        <materialDesign:Card x:Name="TopWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Height="36" Margin="0,-33,0,0" Grid.ColumnSpan="5">
+            <TextBlock Margin="181,3,181,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" FontSize="20" FontFamily="Bahnschrift Light" Foreground="#FF636363"><Run Text="Wifi Credentials "/><Run Text="Recovery"/></TextBlock>
+
+        </materialDesign:Card>
+        <materialDesign:PackIcon Name="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Width="28" Kind="Close" Foreground="Firebrick" Grid.Column="4" Margin="105.6,-32,0,0" />
+        <Image HorizontalAlignment="Left" Height="25" Margin="10,-32,0,0" VerticalAlignment="Top" Width="23" Grid.ColumnSpan="2" Source="wifi-signal.png"/>
+
+
+
+
+    </Grid>
+</Window>
